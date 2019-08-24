@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card p-4">
+        <div class="card-body">
+          <h1>Login</h1>
+          <p class="text-muted">Sign In to your account</p>
+          <form [formGroup]="loginForm" (ngSubmit)="login(loginForm.value)">
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text icon-user"></span>
+              </div>
+              <input class="form-control" type="email" placeholder="Email" formControlName="email" required>
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text icon-lock"></span>
+              </div>
+              <input class="form-control" type="{{ showPassword ? 'text' : 'password' }}" placeholder="Password" formControlName="password" required>
+              <div class="input-group-append" (click)="showPassword = !showPassword">
+                <span class="input-group-text fa fa-eye"></span>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Login</button>
+            <a [routerLink]="[sessionService.roleUrl('forgotPassword')]" class="btn btn-link">Forgot password?</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
